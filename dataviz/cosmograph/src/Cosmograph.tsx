@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
 import { Cosmograph, CosmographTimeline, CosmographSearch, CosmographProvider } from '@cosmograph/react'
 import './App.css'
@@ -6,6 +6,8 @@ import './Legend.css'
 import './Cosmograph.css'
 import { nodes, links } from '../data/nodes_links.ts'
 import Legend from './Legend';  // Adjust the path if necessary
+
+type N = any;  // WHERE IS N declared?
 
 const parseDateString = (dateString: string): string => {
   // Extract year, month, day (YYYYMMDD format)
@@ -18,22 +20,22 @@ function JobAdsViz() {
   const cosmograph = useRef(null)
 
   const deselectNodes = () => {
-    cosmograph.current?.unselectNodes()
+    (cosmograph.current as any)?.unselectNodes()
   }
   const clearSearch = () => {
-    searchRef.current?.clearInput();
+    (searchRef.current as any)?.clearInput();
     deselectNodes();
   };
 
   const playPause = () => {
-    if (cosmograph.current?.isSimulationRunning){
-      cosmograph.current?.pause();
+    if ((cosmograph.current as any)?.isSimulationRunning){
+      (cosmograph.current as any)?.pause();
     }else{
-      cosmograph.current?.start();
+      (cosmograph.current as any)?.start();
     }
   }
   const fitView = () => {
-    cosmograph.current?.fitView();
+    (cosmograph.current as any)?.fitView();
   }
   const customOnSearch = (nodes?: N[]) =>{
     // reset searchview if nodes are empty
@@ -43,16 +45,16 @@ function JobAdsViz() {
     let selectedNodes = nodes;
     nodes?.forEach((node) => {
       // expand the node
-      let adjacentNodes = cosmograph.current?.getAdjacentNodes(node.id);
+      let adjacentNodes = (cosmograph.current as any)?.getAdjacentNodes(node.id);
       selectedNodes = selectedNodes?.concat(adjacentNodes);
     });
-    cosmograph.current?.selectNodes(selectedNodes);
+    (cosmograph.current as any)?.selectNodes(selectedNodes);
   }
   const customSelectResult= (node?: N) =>{
     let selectedNodes = [node];
-    let adjacentNodes = cosmograph.current?.getAdjacentNodes(node.id);
+    let adjacentNodes = (cosmograph.current as any)?.getAdjacentNodes(node.id);
     selectedNodes = selectedNodes?.concat(adjacentNodes);
-    cosmograph.current?.selectNodes(selectedNodes);
+    (cosmograph.current as any)?.selectNodes(selectedNodes);
   }
   return (<>
     <div className="graph-panel">
