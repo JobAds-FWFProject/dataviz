@@ -18,3 +18,7 @@
         /*height: 40vh;*/           /* Adjust height for mobile phones */
     }
 }
+
+.control-panel button{
+    margin:0.5em;
+}
