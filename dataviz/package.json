@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@cosmograph/cosmos": "^1.6.1",
+    "@cosmograph/react": "^1.4.0"
+  },
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

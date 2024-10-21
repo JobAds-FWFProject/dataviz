@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Static Website</title>
+</head>
+<body>
+    <!-- Target element for Cosmograph -->
+    <div id="cosmograph-container"></div>
+
+    <!-- Your script file with type="module" -->
+    <script type="module">
+        import { Cosmograph } from '@cosmograph/cosmograph';
+
+        // Create an HTML element
+        const targetElement = document.getElementById('cosmograph-container');
+
+        // Define the configuration
+        const config = {
+            nodeColor: d => d.color,
+            nodeSize: 20,
+            linkWidth: 2,
+            // ...
+        };
+
+        // Create a Cosmograph instance inside the targetElement
+        const cosmograph = new Cosmograph(targetElement, config);
+
+        // Set the data
+        cosmograph.setData(nodes, links);
+    </script>
+    </body>
+
+    </html>
